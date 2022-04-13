@@ -112,11 +112,11 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
        if( item.getItemId() == R.id.item9){
            Intent intent = new Intent(Home.this,Splash.class);
+           FirebaseAuth.getInstance().signOut();
+           PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("is_user_logged",false).commit();
+           PreferenceManager.getDefaultSharedPreferences(this).edit().putString("display_name","").clear().commit();
+           PreferenceManager.getDefaultSharedPreferences(this).edit().putString("uname","").clear().commit();
            startActivity(intent);
-//           FirebaseAuth.getInstance().signOut();
-//           PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("is_user_logged",false).commit();
-//           PreferenceManager.getDefaultSharedPreferences(this).edit().putString("display_name","").clear().commit();
-//           PreferenceManager.getDefaultSharedPreferences(this).edit().putString("uname","").clear().commit();
            finish();
        }
        return true;
